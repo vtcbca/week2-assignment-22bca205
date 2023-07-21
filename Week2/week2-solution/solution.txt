@@ -1,0 +1,116 @@
+1. Create table 
+
+stud(id,name) (use I'd as primary key)
+stud_details(id,city,mobileno) (Use I'd as foreign key)
+-->
+         create table stud
+   	 (
+  	      id int primary key,
+   	      name varchar(20)
+   	 );
+
+
+         create table stud_details
+        (
+  	    id int references stud(id),
+  	    city varchar(20),
+   	    mobileno int
+   	 );
+
+2. Insert minimum 10 records for each table.
+-->
+
+ insert into stud values(1,'om');
+ insert into stud values(2,'sai');
+ insert into stud values(3,'ram');
+ insert into stud values(4,'bhumi');
+ insert into stud values(5,'payal');
+ insert into stud values(6,'jay');
+ insert into stud values(7,'ritu');
+ insert into stud values(8,'shiv');
+ insert into stud values(9,'janvi');
+ insert into stud values(10,'ushma');
+
+ select * from stud;
+OUTPUT:-
+
+1|om
+2|sai
+3|ram
+4|bhumi
+5|payal
+6|jay
+7|ritu
+8|shiv
+9|janvi
+10|ushma
+
+ insert into stud_details values(1,'surat',1234568529);
+ insert into stud_details values(2,'bangalor',7293158529);
+ insert into stud_details values(3,'bardoli',1236975218);
+ insert into stud_details values(4,'vyara',1293754826);
+ insert into stud_details values(5,'bharuch',4596378159);
+ insert into stud_details values(6,'vyara',4935786159);
+ insert into stud_details values(7,'surat',5872693584);
+ insert into stud_details values(8,'surat',9634875921);
+ insert into stud_details values(9,'kamrej',8572693158);
+ insert into stud_details values(10,'kamrej',7592183467);
+
+ select * from stud_details;
+OUTPUT:-
+
+1|surat|1234568529
+2|bangalor|7293158529
+3|bardoli|1236975218
+4|vyara|1293754826
+5|bharuch|4596378159
+6|vyara|4935786159
+7|surat|5872693584
+8|surat|9634875921
+9|kamrej|8572693158
+10|kamrej|7592183467
+
+3. Display whose student come from the Surat City.
+-->
+      select * from stud_details
+      where city='surat';
+
+OUTPUT:-
+
+1|surat|1234568529
+7|surat|5872693584
+8|surat|9634875921
+
+4. Display student details whose city name start with 'B'.
+-->
+    select * from stud_details
+    where city LIKE 'b%';
+
+OUTPUT:-
+
+2|bangalor|7293158529
+3|bardoli|1236975218
+5|bharuch|4596378159
+
+5. Update mobileno who are comming from 'Surat'
+-->   
+        update stud_details
+        set  mobileno=7592831649
+        where city='surat';
+
+ select * from stud_details;
+
+OUTPUT:-
+
+1|surat|7592831649
+2|bangalor|7293158529
+3|bardoli|1236975218
+4|vyara|1293754826
+5|bharuch|4596378159
+6|vyara|4935786159
+7|surat|7592831649
+8|surat|7592831649
+9|kamrej|8572693158
+10|kamrej|7592183467
+
+
